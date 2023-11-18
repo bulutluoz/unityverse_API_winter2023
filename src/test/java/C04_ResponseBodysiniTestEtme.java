@@ -1,5 +1,6 @@
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -23,6 +24,9 @@ public class C04_ResponseBodysiniTestEtme {
                 ve content type’inin application/json; charset=utf-8,
                 ve Server isimli Header’in degerinin cloudflare,
                 ve status Line’in HTTP/1.1 200 OK
+                ve title'in "Ahmet"
+                ve body attribute'unun "Merhaba"
+                ve userId'nin 10 oldugunu test edin
 
          */
 
@@ -58,7 +62,10 @@ public class C04_ResponseBodysiniTestEtme {
                 .statusCode(200)
                 .contentType("application/json; charset=utf-8")
                 .header("Server","cloudflare")
-                .statusLine("HTTP/1.1 200 OK");
+                .statusLine("HTTP/1.1 200 OK")
+                .body("title", Matchers.equalTo("Ahmet"))
+                .body("body",Matchers.equalTo("Merhaba"))
+                .body("userId", Matchers.equalTo(10));
 
     }
 }
