@@ -2,6 +2,9 @@ package testDatalari;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TestDataJsonplaceholder {
     public static int basariliResponseStatusCode = 200;
     public static String contentType = "application/json; charset=utf-8";
@@ -40,5 +43,25 @@ public class TestDataJsonplaceholder {
         return jsonObject;
     }
 
+    public static Map<String,Object> requestBodyMapOlustur(int userId, int id, String title, String body){
 
+        Map<String,Object> requestBodyMap = new HashMap<>();
+        requestBodyMap.put("userId",userId);
+        requestBodyMap.put("id",id);
+        requestBodyMap.put("title",title);
+        requestBodyMap.put("body",body);
+
+        return requestBodyMap;
+    }
+
+    public static Map<String,Object> responseBodyMapOlustur(Double userId, Double id, String title, String body){
+
+        Map<String,Object> requestBodyMap = new HashMap<>();
+        requestBodyMap.put("userId",userId);
+        requestBodyMap.put("id",id);
+        requestBodyMap.put("title",title);
+        requestBodyMap.put("body",body);
+
+        return requestBodyMap;
+    }
 }
